@@ -1,8 +1,21 @@
-import { useState } from "react";
+import axios from "axios";
+import { Key, useState } from "react";
 
 function App() {
-  const [searchTxt, setSearchTxt] = useState();
-  const [results, setResults] = useState();
+  const [searchTxt, setSearchTxt] = useState<any>();
+  const [results, setResults] = useState<any>();
+  const [isShow, setIsShow] = useState<boolean>(false);
+
+  const fetchData = async () => {
+    const { data } = await axios.get("/country.json");
+    setResults(data);
+  };
+
+  const handleSearch = (e: { target: { value: any } }) => {
+    const textval = e.target.value;
+    textval ? setIsShow(true) : setIsShow(false);
+    setSearchTxt(textval);
+  };
 
   return (
     <div className="container">
@@ -12,40 +25,33 @@ function App() {
             <input
               className="form-control mr-sm-2"
               type="search"
+              value={searchTxt}
+              onChange={handleSearch}
               placeholder="Search"
               aria-label="Search"
             />
             <div className="list-group">
-              <a
-                href="#"
-                className="list-group-item list-group-item-action list-group-item-light">
-                This is a light list group item
-              </a>
-              <a
-                href="#"
-                className="list-group-item list-group-item-action list-group-item-light">
-                This is a light list group item
-              </a>
-              <a
-                href="#"
-                className="list-group-item list-group-item-action list-group-item-light">
-                This is a light list group item
-              </a>
-              <a
-                href="#"
-                className="list-group-item list-group-item-action list-group-item-light">
-                This is a light list group item
-              </a>
-              <a
-                href="#"
-                className="list-group-item list-group-item-action list-group-item-light">
-                This is a light list group item
-              </a>
-              <a
-                href="#"
-                className="list-group-item list-group-item-action list-group-item-light">
-                This is a light list group item
-              </a>
+              {isShow && (
+                <div className="text-center">
+                  <div
+                    className="spinner-border spinner-border-sm"
+                    role="status">
+                    <span className="sr-only"></span>
+                  </div>
+                </div>
+              )}
+              {results?.length > 0 && (
+                <>
+                  {results.map((result: any, index: any) => {
+                    <a
+                      key={index}
+                      href="#"
+                      className="list-group-item list-group-item-action list-group-item-light">
+                      result?.name
+                    </a>;
+                  })}
+                </>
+              )}
             </div>
           </form>
         </div>
