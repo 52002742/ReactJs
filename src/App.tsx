@@ -10,6 +10,38 @@ function App() {
               placeholder="Search"
               aria-label="Search"
             />
+            <div className="list-group">
+              <a
+                href="#"
+                className="list-group-item list-group-item-action list-group-item-light">
+                This is a light list group item
+              </a>
+              <a
+                href="#"
+                className="list-group-item list-group-item-action list-group-item-light">
+                This is a light list group item
+              </a>
+              <a
+                href="#"
+                className="list-group-item list-group-item-action list-group-item-light">
+                This is a light list group item
+              </a>
+              <a
+                href="#"
+                className="list-group-item list-group-item-action list-group-item-light">
+                This is a light list group item
+              </a>
+              <a
+                href="#"
+                className="list-group-item list-group-item-action list-group-item-light">
+                This is a light list group item
+              </a>
+              <a
+                href="#"
+                className="list-group-item list-group-item-action list-group-item-light">
+                This is a light list group item
+              </a>
+            </div>
           </form>
         </div>
       </nav>
