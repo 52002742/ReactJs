@@ -1,4 +1,9 @@
+import { useState } from "react";
+
 function App() {
+  const [searchTxt, setSearchTxt] = useState();
+  const [results, setResults] = useState();
+
   return (
     <div className="container">
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
